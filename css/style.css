@@ -1,0 +1,94 @@
+/* - DarkBlue (Dark Mode Elements): hsl(209, 23%, 22%)
+- VeryDarkBlue (Dark Mode Background): hsl(207, 26%, 17%)
+- VeryDarkBlue (Light Mode Text): hsl(200, 15%, 8%)
+- DarkGray (Light Mode Input): hsl(0, 0%, 52%)
+- VeryLightGray (Light Mode Background): hsl(0, 0%, 98%)
+- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+--DarkBlue :  hsl(209, 23%, 22%)
+--VeryDarkBlue : hsl(207, 26%, 17%)
+--VeryDarkBlue : hsl(200, 15%, 8%)
+--DarkGray : hsl(0, 0%, 52%)
+--VeryLightGray : hsl(0, 0%, 98%)
+--White : hsl(0, 0%, 100%)
+font-family: 'Nunito Sans'; 
+font-size: 16px;
+}
+.container{
+}
+
+header.title{
+    background-color: var(--white);
+    box-shadow:1px 1px 1px 2px rgb(246, 246, 246);
+    padding:20px 40px ;
+}
+header.filter{
+    background-color: var(--DarkGray);
+    display: flex;
+    justify-content: space-between;
+    padding:40px 40px ;
+
+}
+
+.search-box{
+    border-radius: 8px;
+    height: 40px;
+    width: 300px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow:1px 1px 1px 3px rgb(246, 246, 246);
+
+
+}
+.search-box > input{
+    width: 100%;
+    margin-left: 5px;
+    outline: none;
+    border: none;
+}
+
+
+.select{
+    height: 40px;
+    width: 150px;
+    padding: 0 10px;
+}
+.select>option{
+    margin: 20px 10px;
+}
+/* country */
+main.country-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding:10px 40px ;
+    background-color: var(--DarkGray);
+}
+.country-box{
+    box-shadow:1px 1px 1px 3px rgb(246, 246, 246);
+    margin: 30px 30px;
+    padding: 0  0 20px 0;
+    width: 270px;
+}
+.country-image > img{
+height: 150px;
+width: 100%;
+}
+.country-header,
+.country-body{
+padding-left: 10px;
+font-size: 14px;
+width: fit-content;
+}
+.country-body{
+margin-top: 15px;
+font-weight: 300;
+}
