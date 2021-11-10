@@ -1,7 +1,11 @@
 const countryContainer = document.querySelector(".country-container");
-const countryBox = document.querySelector(".country-box");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".search-btn");
+const darkMode = document.querySelector(".dark-mode");
+const title = document.querySelector("header.title");
+const darkLightMode = document.querySelector(".dark-light-mode");
+// const countryContainer = document.querySelector(".country-container");
+// const countryBox = document.querySelector(".country-box");
 
 // ui implement
 const renderUi = (countries) => {
@@ -19,8 +23,8 @@ const renderUi = (countries) => {
                         <h1 class="country-name">${country.name}</h1>
                         </div>
                     <div class="country-body">
+                    <h3 class="country-region">${country.region}</h3>
                             <h3>Population : ${country.population}</h3>
-                            <h3 class="country-region">${country.region}</h3>
                             <h3 class='capital'>Capital : ${country.capital}</h3>
                     </div>`;
     // countryContainer.insertAdjacentHTML("afterbegin", html);
@@ -28,11 +32,17 @@ const renderUi = (countries) => {
   });
 };
 
+const renderErorr = (err) => {};
+
 //fetch api
 const showCountries = async (url) => {
-  const res = await fetch("https://restcountries.com/v2/all");
-  const countries = await res.json();
-  renderUi(countries);
+  try {
+    const res = await fetch("https://restcountries.com/v2/all");
+    const countries = await res.json();
+    renderUi(countries);
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 showCountries();
 
@@ -51,7 +61,6 @@ search.addEventListener("keyup", (e) => {
 });
 
 // Filteration By Region
-
 const selectConntry = document.querySelector("select");
 selectConntry.addEventListener("input", (e) => {
   const regionSelected = e.target.value;
@@ -59,11 +68,34 @@ selectConntry.addEventListener("input", (e) => {
 
   const countryRegion = document.querySelectorAll(".country-region");
   countryRegion.forEach((region) => {
-    if (region.innerHTML.includes(regionSelected)) {
-      region.parentElement.parentElement.style.display = " ";
+    if (region.innerHTML === regionSelected) {
+      region.parentElement.parentElement.style.display = "";
+      // region.innerHTML = "";
       console.log(region.innerHTML);
     } else {
       region.parentElement.parentElement.style.display = "none";
     }
+  });
+});
+
+// Dark Mode
+// darkMode.addEventListener("click", () => {
+//   console.log("c");
+//   title.classList.toggle("title-dark-mode");
+//   title.classList.toggle("title");
+//   countryContainer.classList.toggle("country-container");
+//   countryContainer.classList.toggle("country-container-dark-mode");
+//   countryBox.classList.toggle("country-box-dark-mode");
+//   countryBox.classList.toggle("country-box");
+
+//   darkLightMode.innerHTML === "Dark Mode"
+//     ? (darkLightMode.innerHTML = "light Mode")
+//     : (darkLightMode.innerHTML = "Dark Mode");
+// });
+const countryBox = document.querySelectorAll(".country-box");
+console.log(countryBox);
+countryBox.forEach((cBox) => {
+  cBox.addEventListener("click", () => {
+    console.log("dfds");
   });
 });

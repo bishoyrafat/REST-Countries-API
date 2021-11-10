@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Roboto:wght@300;500;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
@@ -16,7 +16,13 @@
   <body>
     <!-- Where in the world? -->
     <header class="title container">
-      <h1>Where in the world?</h1>
+      <div class="head">
+        <h1>Where in the world?</h1>
+      </div>
+      <div class="dark-mode">
+        <ion-icon name="moon-outline"></ion-icon>
+        <span class="dark-light-mode">Dark Mode</span>
+      </div>
     </header>
 
     <!-- fileration -->
@@ -35,7 +41,7 @@
         <select name="select-conntry" class="select">
           <option value="" selected hidden>Filter By Region</option>
           <option value="Africa">Africa</option>
-          <option value="America">Americas</option>
+          <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>
           <option value="Europe">Europe</option>
         </select>
