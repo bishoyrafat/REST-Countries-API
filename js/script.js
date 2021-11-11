@@ -4,8 +4,9 @@ const btn = document.querySelector(".search-btn");
 const darkMode = document.querySelector(".dark-mode");
 const title = document.querySelector("header.title");
 const darkLightMode = document.querySelector(".dark-light-mode");
-// const countryContainer = document.querySelector(".country-container");
-// const countryBox = document.querySelector(".country-box");
+const modal = document.querySelector(".modal");
+const modalImage = document.querySelector(".modal-image img");
+const modalCloseBtn = document.querySelector('[name="close-outline"]');
 
 // ui implement
 const renderUi = (countries) => {
@@ -29,6 +30,32 @@ const renderUi = (countries) => {
                     </div>`;
     // countryContainer.insertAdjacentHTML("afterbegin", html);
     countryContainer.appendChild(countryDiv);
+
+    countryDiv.addEventListener("click", () => {
+      // modalImage.setAttribute("src", `${country.flag}`);
+      const html = `<div class="modal-image">
+      <img src="${country.flag}" alt="" />
+    </div>
+    <ion-icon name="close-outline"></ion-icon>
+    <div class="modal-info">
+      <div class="modal-header">
+        <h1>${country.name}</h1>
+      </div>
+      <div class="modal-body">
+        <h3>${country.region}</h3>
+        <h3>${country.population}</h3>
+        <h3>${country.capital}</h3>
+        <h3>lorem</h3>
+      </div>
+    </div>`;
+      modal.insertAdjacentHTML("afterbegin", html);
+      console.log(modalImage);
+      modal.style.display = "flex";
+      console.log("c");
+    });
+    modalCloseBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
   });
 };
 
@@ -93,7 +120,7 @@ selectConntry.addEventListener("input", (e) => {
 //     : (darkLightMode.innerHTML = "Dark Mode");
 // });
 const countryBox = document.querySelectorAll(".country-box");
-console.log(countryBox);
+console.log(countryDiv);
 countryBox.forEach((cBox) => {
   cBox.addEventListener("click", () => {
     console.log("dfds");

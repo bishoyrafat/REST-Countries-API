@@ -140,3 +140,60 @@ main.country-container {
   color: rgba(0, 0, 0, 0.541);
   margin-bottom: 15px;
 }
+/* modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+  padding: 0 100px;
+  z-index: 5;
+  display: none;
+}
+
+.modal-image > img {
+  /* height: 400px; */
+  max-width: 600px;
+  min-width: 200px;
+  box-shadow: 0px 0px 10px 1px rgb(204, 204, 204);
+}
+.modal-image,
+.modal-info {
+  flex: 1;
+  margin-right: 100px;
+}
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  background-color: aquamarine;
+}
+.modal-header {
+  background-color: beige;
+  width: 100%;
+}
+
+[name="close-outline"] {
+  position: absolute;
+  top: 25%;
+  right: 20px;
+  font-size: 30px;
+  border-radius: 50px;
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+
+.alert {
+  background-color: red;
+  text-align: center;
+  color: aliceblue;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+}
