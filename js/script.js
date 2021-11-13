@@ -5,6 +5,7 @@ const darkMode = document.querySelector(".dark-mode");
 const title = document.querySelector("header.title");
 const darkLightMode = document.querySelector(".dark-light-mode");
 const modal = document.querySelector(".modal");
+const modalInfo = document.querySelector(".modal-info");
 const modalImage = document.querySelector(".modal-image img");
 const modalCloseBtn = document.querySelector('[name="close-outline"]');
 
@@ -32,29 +33,26 @@ const renderUi = (countries) => {
     countryContainer.appendChild(countryDiv);
 
     countryDiv.addEventListener("click", () => {
-      // modalImage.setAttribute("src", `${country.flag}`);
-      const html = `<div class="modal-image">
-      <img src="${country.flag}" alt="" />
+      modalImage.src = country.flag;
+      const headHtml = `<div class="modal-header">
+      <h1>${country.name}</h1>
     </div>
-    <ion-icon name="close-outline"></ion-icon>
-    <div class="modal-info">
-      <div class="modal-header">
-        <h1>${country.name}</h1>
-      </div>
-      <div class="modal-body">
-        <h3>${country.region}</h3>
-        <h3>${country.population}</h3>
-        <h3>${country.capital}</h3>
-        <h3>lorem</h3>
-      </div>
+    <div class="modal-body">
+      <h3>Region : ${country.region}</h3>
+      <h3>population : ${country.population}</h3>
+      <h3>capital : ${country.capital}</h3>
+      <h3>Borders :  ${country.borders}</h3>
     </div>`;
-      modal.insertAdjacentHTML("afterbegin", html);
-      console.log(modalImage);
+      modalInfo.innerHTML = headHtml;
+
       modal.style.display = "flex";
       console.log("c");
     });
     modalCloseBtn.addEventListener("click", () => {
       modal.style.display = "none";
+    });
+    window.addEventListener("keydown", (e) => {
+      e.keyCode = "27" ? (modal.style.display = "none") : _;
     });
   });
 };
@@ -66,6 +64,7 @@ const showCountries = async (url) => {
   try {
     const res = await fetch("https://restcountries.com/v2/all");
     const countries = await res.json();
+    console.log(countries);
     renderUi(countries);
   } catch (err) {
     console.log(err.message);

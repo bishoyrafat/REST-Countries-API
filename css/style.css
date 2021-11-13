@@ -117,6 +117,10 @@ main.country-container {
   width: 270px;
   border-radius: 8px;
 }
+.country-box:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
 
 .country-image > img {
   height: 150px;
@@ -172,16 +176,16 @@ main.country-container {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  background-color: aquamarine;
+  line-height: 2;
 }
 .modal-header {
-  background-color: beige;
   width: 100%;
+  font-size: 40px;
 }
 
 [name="close-outline"] {
   position: absolute;
-  top: 25%;
+  top: 5%;
   right: 20px;
   font-size: 30px;
   border-radius: 50px;
