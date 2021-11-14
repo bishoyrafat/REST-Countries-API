@@ -10,7 +10,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
+:root {
   --DarkBlue: hsl(209, 23%, 22%);
   --VeryDarkBlue: hsl(207, 26%, 17%);
   --VeryDarkBlue2: hsl(200, 15%, 8%);
@@ -19,6 +19,18 @@ body {
   --White: hsl(0, 0%, 100%);
   font-family: "Nunito Sans";
   font-size: 16px;
+}
+.dark-theme {
+  --DarkBlue: hsl(0, 0%, 100%);
+  --VeryDarkBlue: hsl(0, 0%, 98%);
+  --VeryDarkBlue2: hsl(0, 0%, 52%);
+
+  --DarkGray: hsl(200, 15%, 8%);
+  --VeryLightGray: hsl(207, 26%, 17%);
+  --White: hsl(209, 23%, 22%);
+  font-family: "Nunito Sans";
+  font-size: 16px;
+  color: var(--VeryDarkBlue);
 }
 /* ////////////////////////////////***Where in the world?****\////////////////////////////////// */
 .container {
@@ -35,7 +47,7 @@ header.title {
 }
 .title-dark-mode {
   background-color: var(--DarkBlue);
-  color: aliceblue;
+  color: var();
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
@@ -69,19 +81,23 @@ header.filter {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  box-shadow: 1px 1px 1px 3px rgb(246, 246, 246);
+  box-shadow: 0px 0px 1px 1px var(--VeryDarkBlue2);
 }
 .search-box > input {
   width: 100%;
   margin-left: 5px;
   outline: none;
   border: none;
+  background-color: var(--VeryLightGray);
+  color: var(--VeryDarkBlue);
 }
 
 .select {
   height: 40px;
   width: 150px;
   padding: 0 10px;
+  background-color: var(--VeryLightGray);
+  color: var(--VeryDarkBlue);
 }
 .select > option {
   margin: 20px 10px;
@@ -94,24 +110,9 @@ main.country-container {
   padding: 10px 40px;
   background-color: var(--VeryLightGray);
 }
-.country-container-dark-mode {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 10px 40px;
-  background-color: var(--VeryDarkBlue);
-}
-.country-box-dark-mode {
-  box-shadow: 1px 1px 10px 5px rgb(0, 0, 0);
-  margin: 30px 30px;
-  padding: 0 0 20px 0;
-  width: 270px;
-  border-radius: 8px;
-  background-color: var(--VeryDarkBlue);
-  color: rgb(255, 240, 240);
-}
+
 .country-box {
-  box-shadow: 1px 1px 10px 5px rgb(204, 204, 204);
+  box-shadow: 0px 0px 3px 2px var(--VeryDarkBlue2);
   margin: 30px 30px;
   padding: 0 0 20px 0;
   width: 270px;
@@ -141,7 +142,7 @@ main.country-container {
   font-weight: 300;
 }
 .country-region {
-  color: rgba(0, 0, 0, 0.541);
+  color: var(--VeryDarkBlue);
   margin-bottom: 15px;
 }
 /* modal */
@@ -155,17 +156,31 @@ main.country-container {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--White);
   padding: 0 100px;
   z-index: 5;
   display: none;
+  animation: zoomIn 0.4s;
+}
+.modal-body h3:last-child {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .modal-image > img {
   /* height: 400px; */
   max-width: 600px;
   min-width: 200px;
-  box-shadow: 0px 0px 10px 1px rgb(204, 204, 204);
+  box-shadow: 0px 0px 10px 1px var(--VeryLightGray);
 }
 .modal-image,
 .modal-info {
@@ -189,7 +204,8 @@ main.country-container {
   right: 20px;
   font-size: 30px;
   border-radius: 50px;
-  background-color: rgb(241, 241, 241);
+  background-color: var(--DarkGray);
+  color: white;
   cursor: pointer;
 }
 
@@ -200,4 +216,39 @@ main.country-container {
   padding: 10px 0;
   position: sticky;
   top: 0;
+}
+
+.country-alert {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 40px;
+  display: none;
+  color: var(--DarkGray);
+}
+.sun {
+  display: none;
+  color: #ffd000;
+}
+.moon {
+  color: rgb(0, 0, 0);
+}
+
+.scrollToTop {
+  background-color: #ff0000;
+  color: aliceblue;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
 }
