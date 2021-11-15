@@ -41,10 +41,10 @@ const renderUi = (countries) => {
       <h1>${country.name}</h1>
     </div>
     <div class="modal-body">
-      <h3>Region : ${country.region}</h3>
-      <h3>Population : ${country.population}</h3>
-      <h3>Capital : ${country.capital}</h3>
-      <h3>Borders : ${country.borders}</h3>
+      <h3>🗺 Region : ${country.region}</h3>
+      <h3>🧑 Population : ${country.population}</h3>
+      <h3>🎇 Capital : ${country.capital}</h3>
+    <h3>🎯 Borders : ${country.borders}</h3>
     </div>`;
       modalInfo.innerHTML = headHtml;
 
