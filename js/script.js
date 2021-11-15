@@ -1,4 +1,5 @@
 const countryContainer = document.querySelector(".country-container");
+const countryBox = document.querySelector(".country-box");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".search-btn");
 const darkMode = document.querySelector(".dark-mode");
@@ -11,51 +12,67 @@ const modalCloseBtn = document.querySelector('[name="close-outline"]');
 const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
 const scrollToTop = document.querySelector(".scrollToTop");
+const favIcon = document.querySelector(".favourite span");
+
+let favCounter = 0;
 
 // ui implement
+console.log(countryBox);
 const renderUi = (countries) => {
   countries.forEach((country) => {
     const countryDiv = document.createElement("div");
-    countryDiv.classList.add("country-box");
+    countryDiv.className = "country-box";
     countryDiv.innerHTML = `
-                    <div class="country-image">
-                            <img
-                                src=${country.flag}
-                                alt="flag"
-                            />
-                    </div>
-                    <div class="country-header">
-                        <h1 class="country-name">${country.name}</h1>
-                        </div>
-                    <div class="country-body">
-                    <h3 class="country-region">${country.region}</h3>
-                            <h3>Population : ${country.population}</h3>
-                            <h3 class='capital'>Capital : ${country.capital}</h3>
-                    </div>`;
+                              <div class="country-image">
+                                      <img src=${country.flag}  alt="flag"/>                               
+                              </div>
+                              <div class="country-header">
+                                  <h1 class="country-name">${country.name}</h1>
+                              </div>
+                              <div class="country-body">
+                                      <h3 class="country-region">${country.region}</h3>
+                                      <h3>Population : ${country.population}</h3>
+                                      <h3 class='capital'>Capital : ${country.capital}</h3>
+                              </div>
+                              <input type="button" class="favBtn" value="Add To Favourite">
+                              `;
+
     countryContainer.appendChild(countryDiv);
 
     // Modal
-    countryDiv.addEventListener("click", () => {
-      modalImage.src = country.flag;
-      const headHtml = `<div class="modal-header">
-      <h1>${country.name}</h1>
-    </div>
-    <div class="modal-body">
-      <h3>🗺 Region : ${country.region}</h3>
-      <h3>🧑 Population : ${country.population}</h3>
-      <h3>🎇 Capital : ${country.capital}</h3>
-    <h3>🎯 Borders : ${country.borders}</h3>
-    </div>`;
-      modalInfo.innerHTML = headHtml;
-
-      modal.style.display = "flex";
-      console.log("c");
-    });
+    countryDiv.firstElementChild.firstElementChild.addEventListener(
+      "click",
+      () => {
+        console.log(countryDiv.firstElementChild.firstElementChild);
+        modalImage.src = country.flag;
+        const headHtml = `<div class="modal-header">
+                            <h1>${country.name}</h1>
+                        </div>
+                        <div class="modal-body">
+                            <h3>🗺 Region : ${country.region}</h3>
+                            <h3>🧑 Population : ${country.population}</h3>
+                            <h3>🎇 Capital : ${country.capital}</h3>
+                            <h3>🎯 Borders : ${country.borders}</h3>
+                        </div>`;
+        modalInfo.innerHTML = headHtml;
+        modal.style.display = "flex";
+        console.log("c");
+      }
+    );
     modalCloseBtn.addEventListener("click", () => {
       modal.style.display = "none";
     });
     window.addEventListener("keydown", (e) => {
       e.keyCode = "27" ? (modal.style.display = "none") : _;
+    });
+
+    // Favourite Country
+    favIcon.innerHTML = favCounter;
+
+    countryDiv.lastElementChild.addEventListener("click", (e) => {
+      // favCounter++;
+      favIcon.innerHTML = ++favCounter;
+      console.log(favIcon.innerHTML);
     });
   });
 };
@@ -67,7 +84,6 @@ const showCountries = async (url) => {
   try {
     const res = await fetch("https://restcountries.com/v2/all");
     const countries = await res.json();
-    console.log(countries);
     renderUi(countries);
   } catch (err) {
     console.log(err.message);

@@ -64,6 +64,32 @@ header .dark-mode {
 header .dark-mode > span {
   margin-left: 5px;
 }
+
+.favourite {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.favourite span {
+  content: "";
+  position: absolute;
+  background-color: rgb(121, 25, 16);
+  color: rgb(254, 255, 251);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  right: -9px;
+  top: -9px;
+  font-size: 11px;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ////////////////////////////////////////////////////////////////// */
 
 header.filter {
@@ -120,7 +146,6 @@ main.country-container {
 }
 .country-box:hover {
   transform: scale(1.05);
-  cursor: pointer;
 }
 
 .country-image > img {
@@ -128,6 +153,7 @@ main.country-container {
   width: 100%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+  cursor: pointer;
 }
 .country-body {
   padding-left: 10px;
@@ -251,4 +277,19 @@ main.country-container {
   align-items: center;
   cursor: pointer;
   display: none;
+}
+
+.favBtn {
+  background-color: var(--DarkBlue);
+  box-shadow: 1px 2px 1px 2px var(--VeryLightGray);
+  color: var(--White);
+  cursor: pointer;
+  padding: 10px 20px;
+  display: block;
+  margin: 10px auto 0 auto;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.favBtn:active {
+  transform: translateY(2px);
 }
