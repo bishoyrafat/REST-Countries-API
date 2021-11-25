@@ -1,5 +1,6 @@
 const countryContainer = document.querySelector(".country-container");
 const countryBox = document.querySelector(".country-box");
+const country = document.querySelector(".country");
 const search = document.querySelector(".search");
 const btn = document.querySelector(".search-btn");
 const darkMode = document.querySelector(".dark-mode");
@@ -13,7 +14,7 @@ const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
 const scrollToTop = document.querySelector(".scrollToTop");
 const favIcon = document.querySelector(".favourite span");
-const list = document.querySelector(".list");
+const listBox = document.querySelector(".list-box");
 // const listImg = document.querySelector(".list-image");
 
 let favCounter = 0;
@@ -75,30 +76,24 @@ const renderUi = (countries) => {
     // Favourite Country
     favIcon.innerHTML = favCounter;
     countryDiv.lastElementChild.addEventListener("click", (e) => {
-      favIcon.innerHTML = ++favCounter;
+      // favIcon.innerHTML = favCounter++;
       console.log(`${country.name}`);
       console.log(`${country.flag}`);
-      const listBox = document.createElement("div");
-      listBox.className = "list-box";
-      listBox.insertAdjacentHTML(
-        "afterbegin",
-        `
+
+      listBox.innerHTML += `<aside class='country'>
                               <div class="list-image">
                                   <img src="${country.flag}" alt="" />
                               </div>
                               <h4 class="list-name">${country.name}</h4>
                               <div class="list-number">${favCounter}</div>
-                              <ion-icon name="close"></ion-icon>
-                          `
-      );
+                              <input type='button' value='X' class='close-btn'>
+                            </aside>
+                          `;
 
-      list.appendChild(listBox);
-
-      const favCloseBtn = document.querySelector('[name="close"]');
+      const favCloseBtn = document.querySelector(".close-btn");
       console.log(favCloseBtn);
-      favCloseBtn.addEventListener("click", (e) => {
-        console.log("dd");
-      });
+      country.addEventListener("click", (e) => {});
+      console.log(country);
     });
 
     // Favourite Country List

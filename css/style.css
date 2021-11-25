@@ -297,23 +297,24 @@ main.country-container {
   display: block;
 }
 /* ////////////////////////// */
-/* .list {
+.list {
   display: block;
-} */
+}
 .list-box {
   background-color: #ffd000;
   width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: block;
   padding: 5px 10px;
   border-radius: 5px;
   position: absolute;
   top: 15px;
   right: 0;
 }
-
+.country {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 /* .list::after {
   content: "";
   width: 100%;
