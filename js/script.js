@@ -13,6 +13,8 @@ const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
 const scrollToTop = document.querySelector(".scrollToTop");
 const favIcon = document.querySelector(".favourite span");
+const list = document.querySelector(".list");
+// const listImg = document.querySelector(".list-image");
 
 let favCounter = 0;
 
@@ -52,7 +54,11 @@ const renderUi = (countries) => {
                             <h3>🗺 Region : ${country.region}</h3>
                             <h3>🧑 Population : ${country.population}</h3>
                             <h3>🎇 Capital : ${country.capital}</h3>
-                            <h3>🎯 Borders : ${country.borders}</h3>
+                            <h3>🎯 Borders : ${
+                              typeof country.borders === "undefined"
+                                ? "No Borders"
+                                : country.borders.join(" ")
+                            }</h3>
                         </div>`;
         modalInfo.innerHTML = headHtml;
         modal.style.display = "flex";
@@ -68,12 +74,34 @@ const renderUi = (countries) => {
 
     // Favourite Country
     favIcon.innerHTML = favCounter;
-
     countryDiv.lastElementChild.addEventListener("click", (e) => {
-      // favCounter++;
       favIcon.innerHTML = ++favCounter;
-      console.log(favIcon.innerHTML);
+      console.log(`${country.name}`);
+      console.log(`${country.flag}`);
+      const listBox = document.createElement("div");
+      listBox.className = "list-box";
+      listBox.insertAdjacentHTML(
+        "afterbegin",
+        `
+                              <div class="list-image">
+                                  <img src="${country.flag}" alt="" />
+                              </div>
+                              <h4 class="list-name">${country.name}</h4>
+                              <div class="list-number">${favCounter}</div>
+                              <ion-icon name="close"></ion-icon>
+                          `
+      );
+
+      list.appendChild(listBox);
+
+      const favCloseBtn = document.querySelector('[name="close"]');
+      console.log(favCloseBtn);
+      favCloseBtn.addEventListener("click", (e) => {
+        console.log("dd");
+      });
     });
+
+    // Favourite Country List
   });
 };
 

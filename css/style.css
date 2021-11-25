@@ -293,3 +293,44 @@ main.country-container {
 .favBtn:active {
   transform: translateY(2px);
 }
+.favourite {
+  display: block;
+}
+/* ////////////////////////// */
+/* .list {
+  display: block;
+} */
+.list-box {
+  background-color: #ffd000;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+
+/* .list::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  border: #ff0000 1px solid;
+} */
+
+.list-image,
+.list-name {
+  width: 150px;
+  /* border: #ff0000 2px solid; */
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.list-image img {
+  height: 50px;
+}
