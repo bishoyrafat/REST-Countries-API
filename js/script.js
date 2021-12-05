@@ -86,21 +86,21 @@ const renderUi = (countries) => {
                               </div>
                               <h4 class="list-name">${country.name}</h4>
                               <div class="list-number">${favCounter}</div>
-                              <input type='button' value='X' class='close-btn'>
+                              <input type='button' value='remove' class='close-btn'>
                             </aside>
                           `;
 
       const favCloseBtn = document.querySelector(".close-btn");
-      console.log(favCloseBtn);
-      country.addEventListener("click", (e) => {});
-      console.log(country);
+      const x = country.querySelectorAll(".close-btn");
+      console.log(x);
     });
 
     // Favourite Country List
   });
 };
 
-const renderErorr = (err) => {};
+const renderErorr = (errMsg) =>
+  document.body.insertAdjacentText("beforeend", errMsg);
 
 //fetch api
 const showCountries = async (url) => {
@@ -109,7 +109,7 @@ const showCountries = async (url) => {
     const countries = await res.json();
     renderUi(countries);
   } catch (err) {
-    console.log(err.message);
+    renderErorr(` Something Went Wrong...`);
   }
 };
 showCountries();
