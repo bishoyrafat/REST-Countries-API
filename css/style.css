@@ -303,6 +303,16 @@ main.country-container {
 .list-box {
   background-color: #ffd000;
   width: 400px;
+  display: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+.list-box-active {
+  background-color: #ffd000;
+  width: 400px;
   display: block;
   padding: 5px 10px;
   border-radius: 5px;
@@ -310,6 +320,7 @@ main.country-container {
   top: 15px;
   right: 0;
 }
+
 .country {
   display: flex;
   justify-content: space-around;

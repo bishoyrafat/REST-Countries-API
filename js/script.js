@@ -15,7 +15,7 @@ const moon = document.querySelector(".moon");
 const scrollToTop = document.querySelector(".scrollToTop");
 const favIcon = document.querySelector(".favourite span");
 const listBox = document.querySelector(".list-box");
-// const listImg = document.querySelector(".list-image");
+const star = document.querySelector("[name='star']");
 
 let favCounter = 0;
 
@@ -76,26 +76,36 @@ const renderUi = (countries) => {
     // Favourite Country
     favIcon.innerHTML = favCounter;
     countryDiv.lastElementChild.addEventListener("click", (e) => {
-      // favIcon.innerHTML = favCounter++;
+      favIcon.innerHTML = ++favCounter;
       console.log(`${country.name}`);
       console.log(`${country.flag}`);
 
-      listBox.innerHTML += `<aside class='country'>
+      listBoxHTML = `<aside class='country'>
                               <div class="list-image">
                                   <img src="${country.flag}" alt="" />
                               </div>
                               <h4 class="list-name">${country.name}</h4>
-                              <div class="list-number">${favCounter}</div>
-                              <input type='button' value='remove' class='close-btn'>
+                              <input type='button' value='remove' class='close-btn favBtn'>
                             </aside>
                           `;
 
-      const favCloseBtn = document.querySelector(".close-btn");
-      const x = country.querySelectorAll(".close-btn");
-      console.log(x);
+      listBox.insertAdjacentHTML("afterbegin", listBoxHTML);
+      const countryC = document.querySelector(".country");
+      console.log(listBox.firstElementChild.lastElementChild);
+      listBox.firstElementChild.lastElementChild.addEventListener(
+        "click",
+        () => {
+          countryC.remove();
+        }
+      );
     });
 
     // Favourite Country List
+    star.addEventListener("click", () => {
+      console.log("jjj");
+      listBox.classList.toggle("list-box");
+      // listBox.classList.toggle("list-box-active");
+    });
   });
 };
 
