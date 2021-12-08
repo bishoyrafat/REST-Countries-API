@@ -14,7 +14,7 @@ const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
 const scrollToTop = document.querySelector(".scrollToTop");
 const favIcon = document.querySelector(".favourite span");
-const listBox = document.querySelector("#list-box");
+const listBox = document.querySelector(".list-box");
 const star = document.querySelector("[name='star']");
 
 let favCounter = 0;
@@ -85,7 +85,7 @@ const renderUi = (countries) => {
                                   <img src="${country.flag}" alt="" />
                               </div>
                               <h4 class="list-name">${country.name}</h4>
-                              <input type='button' value='remove' class='close-btn favBtn'>
+                              <input type='button' value='remove' class='close-btn '>
                             </aside>
                           `;
 
@@ -96,19 +96,17 @@ const renderUi = (countries) => {
         "click",
         () => {
           countryC.remove();
+          favIcon.innerHTML = --favCounter;
         }
       );
     });
-
-    // Favourite Country List
-    // var isWindowShown = false;
-    star.addEventListener("click", () => {
-      !listBox.classList.contains("open")
-        ? listBox.classList.add("open")
-        : listBox.classList.remove("open");
-    });
   });
 };
+
+// Favourite Country List
+star.addEventListener("click", () => {
+  listBox.classList.toggle("hidden");
+});
 
 const renderErorr = (errMsg) =>
   document.body.insertAdjacentText("beforeend", errMsg);
