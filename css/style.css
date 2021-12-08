@@ -297,6 +297,9 @@ main.country-container {
   display: block;
 }
 /* ////////////////////////// */
+[name="star"]:hover {
+  cursor: pointer;
+}
 .list {
   display: block;
 }
@@ -310,7 +313,7 @@ main.country-container {
   top: 15px;
   right: 0;
 }
-.list-box-active {
+.list .open {
   background-color: #ffd000;
   width: 400px;
   display: block;

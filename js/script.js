@@ -14,7 +14,7 @@ const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
 const scrollToTop = document.querySelector(".scrollToTop");
 const favIcon = document.querySelector(".favourite span");
-const listBox = document.querySelector(".list-box");
+const listBox = document.querySelector("#list-box");
 const star = document.querySelector("[name='star']");
 
 let favCounter = 0;
@@ -101,10 +101,11 @@ const renderUi = (countries) => {
     });
 
     // Favourite Country List
+    // var isWindowShown = false;
     star.addEventListener("click", () => {
-      console.log("jjj");
-      listBox.classList.toggle("list-box");
-      // listBox.classList.toggle("list-box-active");
+      !listBox.classList.contains("open")
+        ? listBox.classList.add("open")
+        : listBox.classList.remove("open");
     });
   });
 };
