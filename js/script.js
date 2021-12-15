@@ -111,12 +111,31 @@ star.addEventListener("click", () => {
 const renderErorr = (errMsg) =>
   document.body.insertAdjacentText("beforeend", errMsg);
 
+let page = 1;
+let itemsPerPage = 2;
+const load = document.querySelector(".load");
+load.addEventListener("click", function () {
+  loadMore(++page, itemsPerPage, newCountries);
+});
+// Load More
+let countries, newCountries;
+const loadMore = function (page, itemsPerPage, countriesList) {
+  const start = (page - 1) * itemsPerPage;
+  const end = page * itemsPerPage;
+  renderUi(countriesList.slice(start, end));
+};
+
 //fetch api
 const showCountries = async (url) => {
   try {
     const res = await fetch("https://restcountries.com/v2/all");
-    const countries = await res.json();
-    renderUi(countries);
+    countries = await res.json();
+    newCountries = countries;
+    let start = (page - 1) * itemsPerPage;
+    let end = page * itemsPerPage;
+    console.log(start, end);
+
+    renderUi(countries.slice(start, end));
   } catch (err) {
     renderErorr(` Something Went Wrong...`);
   }
@@ -144,15 +163,11 @@ const selectConntry = document.querySelector("select");
 selectConntry.addEventListener("input", (e) => {
   const regionSelected = e.target.value;
   console.log(e.target.value);
-  const countryRegion = document.querySelectorAll(".country-region");
-  countryRegion.forEach((region) => {
-    if (region.innerHTML === regionSelected) {
-      region.parentElement.parentElement.style.display = "";
-      console.log(region.innerHTML);
-    } else {
-      region.parentElement.parentElement.style.display = "none";
-    }
+  newCountries = countries.filter(function (country) {
+    return country.region == regionSelected;
   });
+  countryContainer.innerHTML = "";
+  loadMore(page, itemsPerPage, newCountries);
 });
 
 // Dark Mode
