@@ -112,7 +112,7 @@ const renderErorr = (errMsg) =>
   document.body.insertAdjacentText("beforeend", errMsg);
 
 let page = 1;
-let itemsPerPage = 2;
+let itemsPerPage = 9;
 const load = document.querySelector(".load");
 load.addEventListener("click", function () {
   loadMore(++page, itemsPerPage, newCountries);
