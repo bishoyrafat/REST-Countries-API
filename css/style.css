@@ -146,6 +146,7 @@ main.country-container {
   justify-content: center;
   padding: 10px 40px;
   background-color: var(--VeryLightGray);
+  position: relative;
 }
 
 .country-box {
@@ -160,6 +161,17 @@ main.country-container {
   transform: scale(1.05);
 }
 
+.country-alert {
+  position: absolute;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 40px;
+  color: var(--DarkGray);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: -1;
+}
 .country-image > img {
   height: 150px;
   width: 100%;
@@ -259,13 +271,6 @@ main.country-container {
   top: 0;
 }
 
-.country-alert {
-  text-align: center;
-  padding: 10px 0;
-  font-size: 40px;
-  display: none;
-  color: var(--DarkGray);
-}
 .sun {
   display: none;
   color: #ffd000;
@@ -370,7 +375,7 @@ main.country-container {
 
 .load {
   background-color: var(--DarkBlue);
-  box-shadow: 1px 2px 1px 2px var(--VeryLightGray);
+  box-shadow: 0px 0px 3px 1px var(--VeryLightGray);
   color: var(--White);
   cursor: pointer;
   padding: 10px 20px;
@@ -378,4 +383,5 @@ main.country-container {
   margin: 10px auto 50px auto;
   border-radius: 4px;
   transition: all 0.2s;
+  transform: translate(0, 50%);
 }

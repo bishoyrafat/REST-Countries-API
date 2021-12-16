@@ -150,10 +150,8 @@ search.addEventListener("input", (e) => {
   countryName.forEach((name) => {
     if (name.innerText.toLowerCase().includes(searchInput)) {
       name.parentElement.parentElement.style.display = "";
-      document.querySelector(".country-alert").style.display = "none";
     } else {
       name.parentElement.parentElement.style.display = "none";
-      document.querySelector(".country-alert").style.display = "block";
     }
   });
 });
