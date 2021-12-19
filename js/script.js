@@ -46,7 +46,6 @@ const renderUi = (countries) => {
     countryDiv.firstElementChild.firstElementChild.addEventListener(
       "click",
       () => {
-        console.log(countryDiv.firstElementChild.firstElementChild);
         modalImage.src = country.flag;
         const headHtml = `<div class="modal-header">
                             <h1>${country.name}</h1>
@@ -57,7 +56,7 @@ const renderUi = (countries) => {
                             <h3>🎇 Capital : ${country.capital}</h3>
                             <h3>🎯 Borders : ${
                               typeof country.borders === "undefined"
-                                ? "No Borders"
+                                ? "The Country Has No Borders."
                                 : country.borders.join(" ")
                             }</h3>
                         </div>`;
