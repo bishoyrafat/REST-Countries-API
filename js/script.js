@@ -107,9 +107,6 @@ star.addEventListener("click", () => {
   listBox.classList.toggle("hidden");
 });
 
-const renderErorr = (errMsg) =>
-  document.body.insertAdjacentText("beforeend", errMsg);
-
 let page = 1;
 let itemsPerPage = 9;
 const load = document.querySelector(".load");
@@ -124,6 +121,8 @@ const loadMore = function (page, itemsPerPage, countriesList) {
   renderUi(countriesList.slice(start, end));
 };
 
+const renderErorr = (errMsg) =>
+  document.body.insertAdjacentText("beforeend", errMsg);
 //fetch api
 const showCountries = async (url) => {
   try {

@@ -104,6 +104,7 @@ header.filter {
   background-color: var(--VeryLightGray);
   display: flex;
   justify-content: space-between;
+  gap: 20px;
   padding: 40px 40px;
   position: sticky;
   top: 0px;
@@ -199,7 +200,6 @@ main.country-container {
 /* modal */
 .modal {
   display: flex;
-  /* flex-direction: row; */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -211,7 +211,7 @@ main.country-container {
   right: 0;
   bottom: 0;
   background-color: var(--White);
-  z-index: 5;
+  z-index: 4;
   display: none;
   animation: zoomIn 0.4s;
 }
@@ -250,7 +250,8 @@ main.country-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  color: #444;
+  color: var(--VeryDarkBlue2);
+  font-weight: normal;
 }
 
 [name="close-outline"] {
@@ -332,36 +333,35 @@ main.country-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   position: absolute;
   top: 15px;
-  right: 0;
-  border-radius: 4px;
-  z-index: 110;
+  right: -20px;
+  border-radius: 8px;
+  padding: 5px 0;
+  z-index: 3;
 }
 .hidden {
   display: none;
 }
 
 .country {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  grid-template-rows: 1fr;
-  padding: 0 10px;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 5px 10px;
 }
 
 .list-image,
 .list-name {
-  width: 150px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  margin: 10px 0;
+  width: 100px;
 }
 .list-image img {
   height: 50px;
+  width: 80px;
 }
 
 .close-btn {
